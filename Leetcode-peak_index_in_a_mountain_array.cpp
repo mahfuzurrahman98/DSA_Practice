@@ -6,22 +6,23 @@ public:
     while (b <= e) {
       m = b + (e - b) / 2;
       
-      if (m == 0) { // mid is the first index, go right
+      if (m == 0 || arr[m] < arr[m + 1]) { 
+        // mid is the first index
+        // or mid is smaller than the right one
+        // go right
         b = m + 1;
-      } else if (m == n - 1) { // mid is the last index, go left
+      } else if (m == n - 1 || arr[m] < arr[m - 1]) { 
+        // mid is the last index
+        // or mid is smaller than the left one
+        // go left
         e = m - 1;
       } else {
-        if (arr[m] > arr[m - 1] && arr[m] > arr[m  + 1]) {
-          return m;
-        } else {
-          if (arr[m] < arr[m - 1]) {
-            e = m - 1;
-          } else if (arr[m] < arr[m + 1]) {
-            b = m + 1;
-          }
-        }
+        // mid is in between the range
+        // and mid is the peak
+        break;
       }
     }
+    
     return m;
   }
 }; 
