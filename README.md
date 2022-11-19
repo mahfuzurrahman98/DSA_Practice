@@ -1,1 +1,3 @@
-# DSA_Practice
+# coded.ai.ly
+## Code Daily
+### Data structures, Algorithms on GFG
