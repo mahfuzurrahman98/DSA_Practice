@@ -48,64 +48,28 @@ class Solution
             if (temp->data == 0) {
                 if (l0 != NULL && l0->data == -1) {
                     l0 = new Node(temp->data);
-                    // cout << "@" << l0->data << ", ";
-                    // if (l0->next == NULL) {
-                    //     cout << "null\n";
-                    // } else {
-                    //     cout << "not null\n";
-                    // }
                     l0_h = l0;
                 } 
                 else {
                     l0->next = new Node(temp->data);
-                    // cout <<"!" << l0->data << ", ";
-                    //  if (l0->next == NULL) {
-                    //     cout << "null\n";
-                    // } else {
-                    //     cout << "not null\n";
-                    // }
                     l0 = l0->next;
                 }
             } else if (temp->data == 1) {
                 if (l1 != NULL && l1->data == -1) {
                     l1 = new Node(temp->data);
-                    // cout << "@" << l1->data << ", ";
-                    // if (l1->next == NULL) {
-                    //     cout << "null\n";
-                    // } else {
-                    //     cout << "not null\n";
-                    // }
                     l1_h = l1;
                 } 
                 else {
                     l1->next = new Node(temp->data);
-                    // cout <<"!" << l1->data << ", ";
-                    //  if (l1->next == NULL) {
-                    //     cout << "null\n";
-                    // } else {
-                    //     cout << "not null\n";
-                    // }
                     l1 = l1->next;
                 }
             } else {
                 if (l2 != NULL && l2->data == -1) {
                     l2 = new Node(temp->data);
-                    // cout << "@" << l2->data << ", ";
-                    // if (l2->next == NULL) {
-                    //     cout << "null\n";
-                    // } else {
-                    //     cout << "not null\n";
-                    // }
                     l2_h = l2;
                 } 
                 else {
                     l2->next = new Node(temp->data);
-                    // cout <<"!" << l2->data << ", ";
-                    //  if (l2->next == NULL) {
-                    //     cout << "null\n";
-                    // } else {
-                    //     cout << "not null\n";
-                    // }
                     l2 = l2->next;
                 }
                 
@@ -118,11 +82,9 @@ class Solution
         // Assign next to l0
         if (l1_h != NULL) { // l1 isn't empty
             l0->next = l1_h;
-            if (l2_h != NULL) {
-                l1->next = l2_h;
-            } else {
-                l1->next = NULL;
-            }
+            
+            // Assign to l1, as we successfully assigned to l0
+            l1->next = l2_h;
         } else {
             if (l2_h != NULL) { // l2 isn't not empty
                 l0->next = l2_h;
@@ -131,6 +93,7 @@ class Solution
             }
         }
         
+        // Assign to head
         if (l0_h != NULL) {
             temp = l0_h;
         } else {
