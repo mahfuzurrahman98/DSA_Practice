@@ -1,3 +1,3 @@
 # coded.ai.ly
 ## Code Daily
-### Data structures, Algorithms on Leetcode, GFG
+### Data structures, Algorithms on Leetcode
