@@ -82,15 +82,9 @@ class Solution
         // Assign next to l0
         if (l1_h != NULL) { // l1 isn't empty
             l0->next = l1_h;
-            
-            // Assign to l1, as we successfully assigned to l0
-            l1->next = l2_h;
-        } else {
-            if (l2_h != NULL) { // l2 isn't not empty
-                l0->next = l2_h;
-            } else {
-                l0->next = NULL;
-            }
+            l1->next = l2_h; // Assign to l1, as we successfully assigned to l0
+        } else { // l2 can be empty or not, it doesn't matter
+            l0->next = l2_h;
         }
         
         // Assign to head
