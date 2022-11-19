@@ -88,10 +88,10 @@ class Solution
         }
         
         // Assign to head
-        if (l0_h != NULL) {
+        if (l0_h != NULL) { // l0 isn't empty
             temp = l0_h;
-        } else {
-            temp = l0->next;
+        } else {  // l1 is empty
+            temp = l0->next; // head is either l1 or l2 which simoly next to l0
         }
         
         return temp;
