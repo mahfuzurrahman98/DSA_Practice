@@ -1,72 +1,108 @@
-#include <bits/stdc++.h>
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
 
-class Node {
-public:
+struct QueueNode
+{
     int data;
-    Node* next;
-   
-    Node(int d) {
-        data = d;
+    QueueNode *next;
+    QueueNode(int a)
+    {
+        data = a;
         next = NULL;
     }
 };
 
-class Queue {
-private:
-    Node* f;
-    Node* r;
-    
-public:    
-    Queue() {
-        // Implement the Constructor
-        r = NULL;
-        f = NULL;
+struct MyQueue {
+    QueueNode *front;
+    QueueNode *rear;
+    void push(int);
+    int pop();
+    MyQueue() {front = rear = NULL;}
+};
+
+
+
+int main()
+{
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        MyQueue *sq = new MyQueue();
+
+        int Q;
+        cin>>Q;
+        while(Q--){
+        int QueryType=0;
+        cin>>QueryType;
+        if(QueryType==1)
+        {
+            int a;
+            cin>>a;
+            sq->push(a);
+        }else if(QueryType==2){
+            cout<<sq->pop()<<" ";
+
+        }
+        }
+        cout<<endl;
+    }
     }
 
-    /*----------------- Public Functions of Queue -----------------*/
+// } Driver Code Ends
 
-    bool isEmpty() {
-        // Implement the isEmpty() function
-        return r == NULL && f == NULL;
-    }
 
-    void enqueue(int data) {
-        // Implement the enqueue() function
-        if (isEmpty()) {
-            // first push
-            r = new Node(data);
-            f = r;
-            return;
-        }
-        
-        r->next = new Node(data);
-        r = r->next;
-    }
-
-    int dequeue() {
-        // Implement the dequeue() function
-        if (isEmpty()) {
-            return -1;
-        }
-        
-        if (f == r && f != NULL) {
-            // in case front and rear are at the same place
-            // we can't move them further
-            int peek = f->data;
-            f = r = NULL; // get back them to initial state
-            return peek;
-        }
-        
-        int peek = f->data;
-        f = f->next;        
-        return peek;
-    }
-
-    int front() {
-        // Implement the front() function
-        if (isEmpty()) {
-            return -1;
-        }
-        return f->data;
+/* Structure of a node in Queue
+struct QueueNode
+{
+    int data;
+    QueueNode *next;
+    QueueNode(int a)
+    {
+        data = a;
+        next = NULL;
     }
 };
+
+And structure of MyQueue
+struct MyQueue {
+    QueueNode *front;
+    QueueNode *rear;
+    void push(int);
+    int pop();
+    MyQueue() {front = rear = NULL;}
+}; */
+
+//Function to push an element into the queue.
+void MyQueue:: push(int x)
+{
+    QueueNode* temp = new QueueNode(x);
+    if (rear == NULL) { // first push
+        rear = temp;
+        front = temp;
+    } else {
+        rear->next = temp;
+        rear = rear->next;
+    }
+}
+
+//Function to pop front element from the queue.
+int MyQueue :: pop()
+{
+    if (front == NULL) {
+        return -1;
+    }
+    if (front == rear && front != NULL) { 
+        // in case both front and rear at the same place
+        // only one element present, if it pooped q will be empty
+        // get them back to the initial state
+        int data = front->data;
+        front = rear = NULL;
+        return data;
+    }
+    int data = front->data;
+    front = front->next;
+    return data;
+}
+
