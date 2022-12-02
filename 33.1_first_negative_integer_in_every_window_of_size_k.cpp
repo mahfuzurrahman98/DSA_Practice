@@ -33,22 +33,21 @@ vector<long long> printFirstNegativeInteger(long long int A[], long long int N, 
     vector<long long> ans;
     long long i;
     
-    // push first negative elements inside k length
-    for (i = 0; i < K; i++) {
-        if (A[i] < 0) {
+    for (i = 0; i < K; i++) { // process the first window
+        if (A[i] < 0) { // push if it is negative
             q.push(i);
         }
     }
-    ans.push_back(q.empty()? 0: A[q.front()]);
+    ans.push_back(q.empty()? 0: A[q.front()]); // push to ans
     
-    for (i = K ; i < N ; i++) {
-        if (!q.empty() && q.front() == i - K) {
+    for (i = K ; i < N ; i++) { // process next 
+        if (!q.empty() && q.front() == i - K) { // remove form q if it is from the prev window
             q.pop();
         }
-        if (A[i] < 0) {
+        if (A[i] < 0) { // push if it is negative 
             q.push(i);
         }
-        ans.push_back(q.empty()? 0: A[q.front()]);
+        ans.push_back(q.empty()? 0: A[q.front()]); // push to ans
     }
     
     return ans;
